@@ -1,0 +1,284 @@
+.estoque-page {
+  max-width: 1400px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.current-user-info {
+  background: #E3F2FD;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  color: #1565C0;
+}
+
+.current-user-info strong {
+  color: #0D47A1;
+}
+
+.doctor-info-box {
+  background: #E8F5E9;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.doctor-info-box span {
+  font-size: 13px;
+  color: #2E7D32;
+}
+
+.doctor-info-box strong {
+  font-size: 15px;
+  color: #1B5E20;
+}
+
+.doctor-info-box.warning {
+  background: #FFF3E0;
+}
+
+.doctor-info-box.warning span {
+  color: #E65100;
+}
+
+.btn-primary, .btn-success, .btn-warning, .btn-secondary, .btn-danger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-primary { background: #1E88E5; color: white; }
+.btn-success { background: #4CAF50; color: white; }
+.btn-warning { background: #FF9800; color: white; }
+.btn-secondary { background: #e0e0e0; color: #333; }
+.btn-danger { background: #F44336; color: white; }
+
+.estoque-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.estoque-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.estoque-section h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin-bottom: 0;
+}
+
+.section-header select {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.item-card.low-stock {
+  background: #FFF3E0;
+  border: 1px solid #FF9800;
+}
+
+.item-icon {
+  width: 40px;
+  height: 40px;
+  background: #E3F2FD;
+  color: #1E88E5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.item-quantity {
+  font-size: 14px;
+  color: #666;
+}
+
+.low-badge {
+  background: #FF9800;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.movements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.movement-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.movement-item.entrada .mov-icon {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.movement-item.saida .mov-icon {
+  background: #FFF3E0;
+  color: #FF9800;
+}
+
+.mov-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mov-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mov-item {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.mov-details {
+  font-size: 13px;
+  color: #666;
+}
+
+.mov-notes {
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+}
+
+.mov-date {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.modal h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}

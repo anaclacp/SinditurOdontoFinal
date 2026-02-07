@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+:root {
+  --primary: #1E88E5;
+  --primary-dark: #1565C0;
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --danger: #F44336;
+  --gray-100: #f5f7fa;
+  --gray-200: #e0e0e0;
+  --gray-300: #bdbdbd;
+  --gray-600: #666;
+  --gray-800: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}

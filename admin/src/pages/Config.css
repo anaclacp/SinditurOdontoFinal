@@ -1,0 +1,86 @@
+.config-page {
+  max-width: 1000px;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.item-icon {
+  width: 48px;
+  height: 48px;
+  background: #E3F2FD;
+  color: #1E88E5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.item-detail {
+  font-size: 14px;
+  color: #666;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.item-actions button {
+  background: #f5f5f5;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: #666;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.item-actions button:hover {
+  background: #e0e0e0;
+}
+
+.days-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.day-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.day-item input {
+  cursor: pointer;
+}

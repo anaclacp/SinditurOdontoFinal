@@ -1,0 +1,170 @@
+.pacientes-page {
+  max-width: 1200px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 250px;
+}
+
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.patient-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.patient-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.patient-avatar {
+  width: 56px;
+  height: 56px;
+  background: #E3F2FD;
+  color: #1E88E5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.patient-avatar.large {
+  width: 80px;
+  height: 80px;
+  font-size: 32px;
+}
+
+.patient-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.patient-cpf {
+  font-size: 14px;
+  color: #666;
+}
+
+.patient-birth {
+  font-size: 13px;
+  color: #999;
+}
+
+.patient-modal {
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+}
+
+.patient-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.patient-header h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.patient-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.patient-history h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.no-history {
+  color: #999;
+  text-align: center;
+  padding: 20px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.history-date {
+  font-weight: 500;
+  color: #333;
+  min-width: 140px;
+}
+
+.history-service {
+  flex: 1;
+  color: #666;
+}
+
+.history-doctor {
+  color: #1E88E5;
+}
+
+.history-status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.history-status.agendado { background: #E3F2FD; color: #1E88E5; }
+.history-status.concluido { background: #E8F5E9; color: #4CAF50; }
+.history-status.cancelado { background: #FFEBEE; color: #F44336; }
