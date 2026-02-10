@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { FiSearch, FiUser, FiX } from 'react-icons/fi'
 import { patientsAPI } from '../services/api'
+import { useWebSocket } from '../contexts/WebSocketContext'
 import './Pacientes.css'
 
 export default function Pacientes() {
+  const { lastMessage } = useWebSocket()
   const [patients, setPatients] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
@@ -14,6 +16,12 @@ export default function Pacientes() {
   useEffect(() => {
     loadPatients()
   }, [])
+
+  useEffect(() => {
+    if (lastMessage && lastMessage.type === 'new_patient') {
+      loadPatients()
+    }
+  }, [lastMessage])
 
   const loadPatients = async () => {
     try {

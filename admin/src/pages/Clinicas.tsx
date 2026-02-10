@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { FiPlus, FiEdit2, FiTrash2, FiMapPin } from 'react-icons/fi'
 import { unitsAPI } from '../services/api'
+import { useWebSocket } from '../contexts/WebSocketContext'
 import './Config.css'
 
 export default function Clinicas() {
+  const { lastMessage } = useWebSocket()
   const [units, setUnits] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
@@ -14,6 +16,12 @@ export default function Clinicas() {
   useEffect(() => {
     loadUnits()
   }, [])
+
+  useEffect(() => {
+    if (lastMessage && lastMessage.type === 'units_updated') {
+      loadUnits()
+    }
+  }, [lastMessage])
 
   const loadUnits = async () => {
     try {

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { FiPlus, FiEdit2, FiTrash2, FiUser } from 'react-icons/fi'
 import { doctorsAPI, unitsAPI } from '../services/api'
+import { useWebSocket } from '../contexts/WebSocketContext'
 import './Config.css'
 
 export default function Doutores() {
+  const { lastMessage } = useWebSocket()
   const [doctors, setDoctors] = useState<any[]>([])
   const [units, setUnits] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -20,6 +22,12 @@ export default function Doutores() {
   useEffect(() => {
     loadData()
   }, [])
+
+  useEffect(() => {
+    if (lastMessage && lastMessage.type === 'doctors_updated') {
+      loadData()
+    }
+  }, [lastMessage])
 
   const loadData = async () => {
     try {

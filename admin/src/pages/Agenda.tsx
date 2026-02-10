@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { FiCheck, FiX, FiClock, FiFilter } from 'react-icons/fi'
 import { appointmentsAPI } from '../services/api'
+import { useWebSocket } from '../contexts/WebSocketContext'
 import './Agenda.css'
 
 export default function Agenda() {
+  const { lastMessage } = useWebSocket()
   const [appointments, setAppointments] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('todos')
@@ -13,6 +15,12 @@ export default function Agenda() {
   useEffect(() => {
     loadAppointments()
   }, [filter])
+
+  useEffect(() => {
+    if (lastMessage && ['new_appointment', 'appointment_cancelled', 'appointment_updated'].includes(lastMessage.type)) {
+      loadAppointments()
+    }
+  }, [lastMessage])
 
   const loadAppointments = async () => {
     try {

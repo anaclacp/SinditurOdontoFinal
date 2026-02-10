@@ -75,6 +75,10 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({ children }
           toast.info('Serviços atualizados')
         } else if (message.type === 'doctors_updated') {
           toast.info('Doutores atualizados')
+        } else if (message.type === 'inventory_updated') {
+          toast.info('Estoque atualizado')
+        } else if (message.type === 'appointment_updated') {
+          toast.info('Agendamento atualizado')
         }
       } catch (error) {
         console.error('Error parsing WebSocket message:', error)

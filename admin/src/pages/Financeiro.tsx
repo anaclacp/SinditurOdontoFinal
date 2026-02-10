@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { FiDollarSign, FiTrendingUp, FiCalendar } from 'react-icons/fi'
 import { financialAPI } from '../services/api'
+import { useWebSocket } from '../contexts/WebSocketContext'
 import './Financeiro.css'
 
 export default function Financeiro() {
+  const { lastMessage } = useWebSocket()
   const [summary, setSummary] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1)
@@ -13,6 +15,12 @@ export default function Financeiro() {
   useEffect(() => {
     loadSummary()
   }, [selectedMonth, selectedYear])
+
+  useEffect(() => {
+    if (lastMessage && lastMessage.type === 'appointment_updated') {
+      loadSummary()
+    }
+  }, [lastMessage])
 
   const loadSummary = async () => {
     setLoading(true)

@@ -3,10 +3,12 @@ import { toast } from 'react-toastify'
 import { FiPlus, FiMinus, FiPackage, FiFilter } from 'react-icons/fi'
 import { inventoryAPI, doctorsAPI } from '../services/api'
 import { useAuth } from '../contexts/AuthContext'
+import { useWebSocket } from '../contexts/WebSocketContext'
 import './Estoque.css'
 
 export default function Estoque() {
   const { user } = useAuth()
+  const { lastMessage } = useWebSocket()
   const [items, setItems] = useState<any[]>([])
   const [movements, setMovements] = useState<any[]>([])
   const [doctors, setDoctors] = useState<any[]>([])
@@ -29,6 +31,13 @@ export default function Estoque() {
   useEffect(() => {
     loadMovements()
   }, [filterType])
+
+  useEffect(() => {
+    if (lastMessage && lastMessage.type === 'inventory_updated') {
+      loadData()
+      loadMovements()
+    }
+  }, [lastMessage])
 
   useEffect(() => {
     // Verificar se o usuário logado é um doutor

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { FiPlus, FiEdit2, FiTrash2, FiSettings } from 'react-icons/fi'
 import { servicesAPI } from '../services/api'
+import { useWebSocket } from '../contexts/WebSocketContext'
 import './Config.css'
 
 export default function Servicos() {
+  const { lastMessage } = useWebSocket()
   const [services, setServices] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
@@ -14,6 +16,12 @@ export default function Servicos() {
   useEffect(() => {
     loadServices()
   }, [])
+
+  useEffect(() => {
+    if (lastMessage && lastMessage.type === 'services_updated') {
+      loadServices()
+    }
+  }, [lastMessage])
 
   const loadServices = async () => {
     try {
