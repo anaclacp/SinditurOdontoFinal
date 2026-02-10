@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: sinditur-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: dental_clinic
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sinditur-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      MONGO_URL: mongodb://mongo:27017
+      DB_NAME: dental_clinic
+      SECRET_KEY: change-this-in-production-use-a-real-secret
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: sinditur-admin
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_BACKEND_URL: http://backend:8000
+      VITE_WS_BACKEND_URL: ws://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    volumes:
+      - ./admin:/app
+      - /app/node_modules
+
+volumes:
+  mongo_data:

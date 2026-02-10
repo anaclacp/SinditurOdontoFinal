@@ -25,8 +25,15 @@ from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
 
 # ==================== MOCK DB FOR LOCAL TESTING (NO MONGO REQUIRED) ====================
 class MockCursor:
@@ -199,13 +206,6 @@ async def websocket_endpoint(websocket: WebSocket, client_id: str):
 # Create routers
 api_router = APIRouter(prefix="/api")
 admin_router = APIRouter(prefix="/api/admin")
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
 # ==================== MODELS ====================
 
@@ -1024,7 +1024,8 @@ async def create_inventory_item(item_data: InventoryItemCreate, current_user: di
         "created_at": datetime.utcnow(),
         "created_by": current_user.get("name", "")
     })
-    
+
+    await manager.broadcast({"type": "inventory_updated", "data": {"item": item_data.name}})
     return item_dict
 
 @admin_router.put("/inventory/{item_id}")
@@ -1033,6 +1034,7 @@ async def update_inventory_item(item_id: str, item_data: InventoryItemUpdate, cu
     if update_dict:
         await db.inventory.update_one({"id": item_id}, {"$set": update_dict})
     item = await db.inventory.find_one({"id": item_id})
+    await manager.broadcast({"type": "inventory_updated", "data": {"item_id": item_id}})
     return item
 
 @admin_router.post("/inventory/movement")
@@ -1071,7 +1073,8 @@ async def add_inventory_movement(movement: InventoryMovement, current_user: dict
         "created_by": current_user.get("name", "")
     }
     await db.inventory_movements.insert_one(movement_dict)
-    
+
+    await manager.broadcast({"type": "inventory_updated", "data": {"item": item["name"], "movement": movement.type}})
     return movement_dict
 
 @admin_router.get("/inventory/movements")
