@@ -84,3 +84,7 @@ android-sdk/ -e
 # Environment files
 *.env
 *.env.*
+
+# Mobile (Expo/React Native)
+.expo/
+.metro-cache/

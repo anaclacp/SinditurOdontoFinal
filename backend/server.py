@@ -928,7 +928,7 @@ async def update_appointment(appointment_id: str, data: AppointmentUpdate, curre
     apt = await db.appointments.find_one({"id": appointment_id})
     
     # Convert datetime to string for safety in broadcast
-    broadcast_data = apt.copy()
+    broadcast_data = strip_id(apt.copy())
     if 'created_at' in broadcast_data and isinstance(broadcast_data['created_at'], datetime):
         broadcast_data['created_at'] = broadcast_data['created_at'].isoformat()
     if 'completed_at' in broadcast_data and isinstance(broadcast_data['completed_at'], datetime):
@@ -994,12 +994,21 @@ async def get_daily_financial(date: str, current_user: dict = Depends(get_staff_
         "appointments": [AppointmentResponse(**a) for a in appointments]
     }
 
+def strip_id(doc):
+    """Remove MongoDB _id field for JSON serialization"""
+    if doc and '_id' in doc:
+        del doc['_id']
+    return doc
+
+def strip_ids(docs):
+    return [strip_id(d) for d in docs]
+
 # ==================== INVENTORY ROUTES ====================
 
 @admin_router.get("/inventory")
 async def get_inventory(current_user: dict = Depends(get_staff_user)):
     items = await db.inventory.find().to_list(500)
-    return items
+    return strip_ids(items)
 
 @admin_router.post("/inventory")
 async def create_inventory_item(item_data: InventoryItemCreate, current_user: dict = Depends(get_staff_user)):
@@ -1026,7 +1035,7 @@ async def create_inventory_item(item_data: InventoryItemCreate, current_user: di
     })
 
     await manager.broadcast({"type": "inventory_updated", "data": {"item": item_data.name}})
-    return item_dict
+    return strip_id(item_dict)
 
 @admin_router.put("/inventory/{item_id}")
 async def update_inventory_item(item_id: str, item_data: InventoryItemUpdate, current_user: dict = Depends(get_staff_user)):
@@ -1035,7 +1044,7 @@ async def update_inventory_item(item_id: str, item_data: InventoryItemUpdate, cu
         await db.inventory.update_one({"id": item_id}, {"$set": update_dict})
     item = await db.inventory.find_one({"id": item_id})
     await manager.broadcast({"type": "inventory_updated", "data": {"item_id": item_id}})
-    return item
+    return strip_id(item)
 
 @admin_router.post("/inventory/movement")
 async def add_inventory_movement(movement: InventoryMovement, current_user: dict = Depends(get_staff_user)):
@@ -1093,7 +1102,7 @@ async def get_inventory_movements(
         query["doctor_id"] = doctor_id
     
     movements = await db.inventory_movements.find(query).sort("created_at", -1).to_list(500)
-    return movements
+    return strip_ids(movements)
 
 # ==================== PATIENTS ROUTES ====================
 
@@ -1131,7 +1140,7 @@ async def update_document_template(template_type: str, data: DocumentTemplateUpd
         {"$set": {"content": data.content, "updated_at": datetime.utcnow()}}
     )
     template = await db.document_templates.find_one({"type": template_type})
-    return template
+    return strip_id(template)
 
 @admin_router.post("/documents/generate")
 async def generate_document(data: DocumentGenerate, current_user: dict = Depends(get_staff_user)):
