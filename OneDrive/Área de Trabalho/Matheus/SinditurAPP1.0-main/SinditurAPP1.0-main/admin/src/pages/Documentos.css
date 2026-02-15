@@ -1,0 +1,145 @@
+.documentos-page {
+  max-width: 1400px;
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.docs-form, .docs-preview {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.docs-form h2, .docs-preview h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.docs-form .btn-primary {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.preview-content {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.preview-content pre {
+  white-space: pre-wrap;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.preview-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.preview-actions button {
+  flex: 1;
+}
+
+.templates-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.templates-section h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.templates-hint {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.template-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.template-card:hover {
+  background: #E3F2FD;
+}
+
+.template-icon {
+  font-size: 32px;
+  color: #1E88E5;
+}
+
+.template-name {
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #999;
+}
+
+.template-modal {
+  max-width: 800px;
+  width: 90%;
+}
+
+.modal-hint {
+  color: #666;
+  font-size: 13px;
+  margin-bottom: 16px;
+  background: #FFF3E0;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.template-editor {
+  width: 100%;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  resize: vertical;
+}

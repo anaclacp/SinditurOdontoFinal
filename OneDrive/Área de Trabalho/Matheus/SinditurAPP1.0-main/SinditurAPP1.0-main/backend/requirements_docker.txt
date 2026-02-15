@@ -1,0 +1,26 @@
+fastapi
+uvicorn
+motor
+python-dotenv
+python-socketio
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic
+pydantic-settings
+email-validator
+requests
+aiohttp
+# reportlab
+# weasyprint
+jinja2
+bcrypt
+dnspython
+google-generativeai
+openai
+litellm
+stripe
+boto3
+s3transfer
+pillow
+pyjwt

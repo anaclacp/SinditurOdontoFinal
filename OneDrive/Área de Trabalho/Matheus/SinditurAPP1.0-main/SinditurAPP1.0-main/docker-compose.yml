@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8001:8001"
+    environment:
+      - MONGO_URL=mongodb+srv://OdontoSinditur:RVjuw8QklN7LaItu@cluster0.cm2zltn.mongodb.net/?appName=Cluster0
+      - DB_NAME=dental_clinic
+      - SECRET_KEY=dental-clinic-secret-key-2024
+    volumes:
+      - ./backend:/app
+    command: uvicorn server:fastapi_app --host 0.0.0.0 --port 8001 --reload
+
+  admin:
+    build: ./admin
+    ports:
+      - "5173:5173"
+    environment:
+      - BACKEND_URL=http://backend:8001
+    depends_on:
+      - backend
+    volumes:
+      - ./admin:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:8081"
+    environment:
+      - EXPO_PUBLIC_BACKEND_URL=http://localhost:8001
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules

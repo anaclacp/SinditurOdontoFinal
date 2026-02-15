@@ -1,0 +1,398 @@
+.equipe-page {
+  max-width: 1200px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #E3F2FD;
+}
+
+.staff-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.staff-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.staff-avatar {
+  width: 48px;
+  height: 48px;
+  background: #E3F2FD;
+  color: #1E88E5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.staff-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.staff-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.staff-email {
+  font-size: 14px;
+  color: #666;
+}
+
+.staff-role {
+  font-size: 13px;
+  color: #1E88E5;
+}
+
+.staff-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.staff-status.active {
+  background: #E8F5E9;
+  color: #4CAF50;
+}
+
+.staff-status.inactive {
+  background: #FFEBEE;
+  color: #F44336;
+}
+
+.staff-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.staff-actions button {
+  background: #f5f5f5;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  color: #666;
+  cursor: pointer;
+}
+
+.staff-actions button:hover {
+  background: #e0e0e0;
+}
+
+/* Doctors Grid */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.doctor-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.doctor-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 3px solid #E3F2FD;
+}
+
+.doctor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-photo .no-photo {
+  width: 100%;
+  height: 100%;
+  background: #FFF3E0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FF9800;
+}
+
+.doctor-photo .no-photo svg {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.doctor-photo .no-photo span {
+  font-size: 11px;
+}
+
+.doctor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.doctor-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.doctor-specialty {
+  font-size: 14px;
+  color: #1E88E5;
+}
+
+.doctor-cro {
+  font-size: 13px;
+  color: #666;
+}
+
+.doctor-unit {
+  font-size: 13px;
+  color: #999;
+}
+
+.doctor-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.doctor-actions button {
+  background: #f5f5f5;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.doctor-actions button:hover {
+  background: #e0e0e0;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal.doctor-modal {
+  max-width: 600px;
+}
+
+.modal h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.permissions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.permission-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.permission-item input {
+  cursor: pointer;
+}
+
+.days-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.day-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+/* Photo Upload */
+.photo-upload-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.photo-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #E3F2FD;
+  flex-shrink: 0;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #FFF3E0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FF9800;
+}
+
+.photo-placeholder svg {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.photo-placeholder span {
+  font-size: 10px;
+  text-align: center;
+}
+
+.photo-upload-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.photo-upload-btn label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.photo-hint {
+  font-size: 12px;
+  color: #4CAF50;
+  font-weight: 500;
+}
+
+/* Buttons */
+.btn-primary, .btn-success, .btn-secondary, .btn-danger, .btn-warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-primary { background: #1E88E5; color: white; }
+.btn-success { background: #4CAF50; color: white; }
+.btn-secondary { background: #e0e0e0; color: #333; }
+.btn-danger { background: #F44336; color: white; }
+.btn-warning { background: #FF9800; color: white; }
+
+.loading, .empty {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  background: white;
+  border-radius: 12px;
+}

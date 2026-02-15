@@ -1,0 +1,222 @@
+.financeiro-page {
+  max-width: 1200px;
+}
+
+.financeiro-page .page-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  margin: 0 0 16px 0;
+  color: #1a1a2e;
+}
+
+.filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.filter-group select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  background: white;
+}
+
+.financial-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.fin-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.fin-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.fin-card.revenue .fin-icon {
+  background: #e8f5e9;
+  color: #4CAF50;
+}
+
+.fin-card.appointments .fin-icon {
+  background: #e3f2fd;
+  color: #1E88E5;
+}
+
+.fin-card.average .fin-icon {
+  background: #fff3e0;
+  color: #FF9800;
+}
+
+.fin-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.fin-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.fin-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* Clinic Breakdown */
+.clinic-breakdown {
+  margin-bottom: 24px;
+}
+
+.clinic-breakdown h2 {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #1a1a2e;
+}
+
+.clinic-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.clinic-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.clinic-card-header {
+  background: linear-gradient(135deg, #1E88E5, #1565c0);
+  color: white;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.clinic-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clinic-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clinic-stat-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.clinic-stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.clinic-stat-value.revenue {
+  color: #4CAF50;
+}
+
+/* Transactions */
+.transactions-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.transactions-section h2 {
+  font-size: 18px;
+  margin: 0 0 16px 0;
+  color: #1a1a2e;
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table th,
+.transactions-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+}
+
+.transactions-table th {
+  font-weight: 600;
+  color: #666;
+  background: #fafafa;
+}
+
+.transactions-table td.value {
+  color: #4CAF50;
+  font-weight: 700;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: #999;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
