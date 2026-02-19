@@ -63,6 +63,8 @@ export default function Agenda() {
   }
 
   const loadAppointments = async () => {
+    // For non-admin users, wait until doctor ID is resolved before loading
+    if (!isAdmin && !myDoctorId) return
     try {
       const params: any = {}
       if (filter !== 'todos') params.status = filter
